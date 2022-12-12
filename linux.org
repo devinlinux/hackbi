@@ -42,6 +42,10 @@ Linux was create in 1991 by Linux Torvalds who, at the time, was a computer scie
 
 Over the years, many people and organizations have contributed to the development of the Linux kernel, and today it is used as the basis for a wide variety of operating systems. Some of the most popular Linux-based operating systems (known as distros) include Ubuntu, Fedora, Arch, and Gentoo Linux.
 
+#+CAPTION: A chart showing the parts of a computer system
+#+NAME: Computer System Circles Chart
+[[./circles.png]]
+
 * INSTALLING LINUX
 ** Window Managers and Desktop Environments
 In the Linux operating system, a window manager is a program that controls the placement and appearance of windows withing a graphical user interface (GUI). A window manager is responsible for drawing the frames and borders around the windows, and for allowing the user to move, resize, and arrange windows on the desktop.
