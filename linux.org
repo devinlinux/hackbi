@@ -12,7 +12,7 @@ General Plan:
 #+END_COMMENT
 
 * TABLE OF CONTENTS :toc:
-- [[#what-is-linux][What IS LINUX]]
+- [[#what-is-linux][WHAT IS LINUX]]
   - [[#a-brief-history-of-linux][A Brief History of Linux]]
 - [[#installing-linux][INSTALLING LINUX]]
   - [[#window-managers-and-desktop-environments][Window Managers and Desktop Environments]]
@@ -21,7 +21,7 @@ General Plan:
   - [[#preparing-virtualbox][Preparing VirtualBox]]
   - [[#installing-arch-with-calamares][Installing Arch with Calamares]]
 - [[#setting-up][SETTING UP]]
-  - [[#full-system-updaet][Full System Updaet]]
+  - [[#full-system-update][Full System Update]]
   - [[#sound][Sound]]
   - [[#general-config][General Config]]
 - [[#the-terminal][THE TERMINAL]]
@@ -34,11 +34,11 @@ General Plan:
   - [[#package-managers][Package Managers]]
   - [[#aur][AUR]]
 
-* What IS LINUX
+* WHAT IS LINUX
 Linux is a family of free and open-source (foss) operating systems, which are based on the Linux kernel. The kernel is the core of an operating system that manages the hardware and software resources of a computer. Linux is known for its stability, security, and flexibility, and is used in a wide range of devices from smartphones and personal computers to servers and supercomputers.
 
 ** A Brief History of Linux
-Linux was create in 1991 by Linux Torvalds who, at the time, was a computer science student at the University of Helsinki in Finland, where he wrote hte Linux kernel as a personal project to create an operating system that was free and open-source. He released the kernel under the GNU General Public License (GPL), which allowed others to freely modify and distribute it.
+Linux was create in 1991 by Linux Torvalds who, at the time, was a computer science student at the University of Helsinki in Finland, where he wrote the Linux kernel as a personal project to create an operating system that was free and open-source. He released the kernel under the GNU General Public License (GPL), which allowed others to freely modify and distribute it.
 
 Over the years, many people and organizations have contributed to the development of the Linux kernel, and today it is used as the basis for a wide variety of operating systems. Some of the most popular Linux-based operating systems (known as distros) include Ubuntu, Fedora, Arch, and Gentoo Linux.
 
@@ -106,7 +106,7 @@ The Install page of the installer simply installes the system and alerts you to 
 *** Finish
 The Finish page of teh installer simply alerts you that Arch Linux has been installed on your computer and you can restart your computer to exit the live environment and enter the full operating system. On a virtual machine, you would select close, then go to the storage section and remove the installation media. You have now completed a linux installation.
 * SETTING UP
-** Full System Updaet
+** Full System Update
 This version of the Arch Linux installer is designed to be completely offline meaning that it has a snapshot of past packages that are not necessarily the most recent version of the packages. Because of this, the installation time is faster since it does not have to pull the most recent version of the packages, but it means that the first thing you have to do is a full system upgrade.
 
 The first thing that you are going to want to do is sync the mirrors. This simply means that you are connecting to the mirrors and giving your system the necessary information about what the most recent version of packages is. On Arch Linux, we will do this with the package manager, pacman.
