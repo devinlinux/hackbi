@@ -1,0 +1,277 @@
+#+TITLE: HTML Workshop Script
+#+AUTHOR: Michael Bobrowski
+#+DESCRIPTION: The Workshop Script for the HTML workshop at HackBI VI
+#+STARTUP: showeverything
+
+* TABLE OF CONTENTS :toc:
+- [[#what-is-html][WHAT IS HTML]]
+  - [[#a-brief-history-of-html][A Brief History of HTML]]
+- [[#setting-up-an-editor][SETTING UP AN EDITOR]]
+- [[#basic-html-file-structure][BASIC HTML FILE STRUCTURE]]
+- [[#basic-html-tags-and-uses][BASIC HTML TAGS AND USES]]
+- [[#adding-css][ADDING CSS]]
+- [[#more-advanced-html-tags-and-uses][MORE ADVANCED HTML TAGS AND USES]]
+- [[#css-animations][CSS ANIMATIONS]]
+
+* WHAT IS HTML
+HTML stands for Hypertext Markup Language. It is a language that is used to create and structure the content of a website. HTML consists of a series of elements that are used to define the different parts of a web page, such as headings, paragraphs, links, and images. These elements are marked up using tags, which are enclosed in angle brackets. HTML is used in conjunction with other languages, such as CSS and JavaScript, to create dynamic and interactive websites.
+
+** A Brief History of HTML
+HTML was first developed in the late 1980s by a gruop of researchers at the European Organization for Nuclear Research (CERN) in Switzerland. The first version of HTML, known as HTML 1.0, was released in 1993 and provided a basic set of elements that could be used to create simple web pages. Over the years, HTML has evolved to include many new features and capabilities. The latest version of HTML is HTML5, which was released in 2014 and added support for new types of media, such as video and audio, as well as new features for web applications.
+
+* SETTING UP AN EDITOR
+Visual Studio Code will be used for this workshop. Attendees are welcome to use any editor that they desire, although vscode is standard. To set up Visual Studio Code, the following steps are recommended to achieve the best user expirience:
+
+1. Install an HTML code extension that provides code completion as well as HTML closing tag insertion
+2. Create a new HTML file using the FIle, New File menu.
+3. Save the file with a .html extension, index.html is the recommended name for the main page of any website
+4. Once you have created a basic website, use run without debuging to open a chrome web app with your application
+
+* BASIC HTML FILE STRUCTURE
+Every HTML file contains a general structure in order to render the desired elements onto a page. The general structure includes declaring the language that will be used, creating <html> tags to tell the browser what to render, creating <head> tags for metadata, and creating <body> tags for the actual content of the page.
+
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Some Title</title>
+  </head>
+
+  <body>
+    <!-- Main Website Content Goes Here -->
+  </body>
+
+</html>
+#+END_SRC
+
+As demonstrated in the code snippet above, the HTML file first declares that it is using the HTML language, then wraps everything in <html> tags. Tags that are not inside the HTML tags will not be rendered. Inside the <head> tags, you can add metadata about the site, such as its title. Finally, inside the <body> tags you add all of the main website content that will be rendered in the browser. Every HTML file follows this basic structure.
+
+* BASIC HTML TAGS AND USES
+| TAG       | DESCRIPTION                              |
+|-----------+------------------------------------------|
+| <p>       | paragraph                                |
+| <hX>      | Heading X size 1-6                       |
+| <a>       | Insert a link                            |
+| <img>     | Insert an image                          |
+| <div>     | Create a container for elements          |
+| <form>    | Create a form for user data              |
+| <input>   | Form fields for user data                |
+| <button>  | Create a button that can be clicked      |
+| <table>   | Create a table                           |
+| <tr>      | Create a row in a table                  |
+| <td>      | Create a cell in a table row             |
+| <ul>      | Unordered list                           |
+| <ol>      | Ordered list                             |
+| <li>      | Create a list item                       |
+| <header>  | Create a header section for a page       |
+| <footer>  | Create a footer section for a page       |
+| <nav>     | Create a navigation menu                 |
+| <article> | Create a self-contained peice of content |
+| <section> | Create a section in a document           |
+| <main>    | Define the main content of a page        |
+| <aside>   | Create content related, but separate     |
+
+By using a combination of these tags withing a HTML file, you can create basic website that can perform a variety of tasks for a wide range of use cases. Below is an example using those basic tags.
+
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Website</title>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to My Website!</h1>
+  </header>
+  <nav>
+    <a href="#home">Home</a> |
+    <a href="#about">About</a> |
+    <a href="#contact">Contact</a>
+  </nav>
+  <main>
+    <section>
+      <h2>Home</h2>
+      <p>This is the home page of my website. Here, you can learn more about me and what I do.</p>
+    </section>
+    <section>
+      <h2>About</h2>
+      <p>I am a web developer and I love creating beautiful and functional websites.</p>
+      <p>I am skilled in HTML, CSS, and JavaScript, and I am always learning new technologies and techniques to improve my craft.</p>
+    </section>
+    <section>
+      <h2>Contact</h2>
+      <p>If you would like to get in touch with me, you can send me an email at <a href="mailto:info@example.com">info@example.com</a>.</p>
+      <p>You can also connect with me on social media using the links below:</p>
+      <ul>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </section>
+  </main>
+  <aside>
+    <h3>Recent Blog Posts</h3>
+    <ul>
+      <li><a href="#">HTML Basics</a></li>
+      <li><a href="#">CSS Tips and Tricks</a></li>
+      <li><a href="#">JavaScript for Beginners</a></li>
+    </ul>
+  </aside>
+  <footer>
+    <p>Copyright 2021 My Website. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
+
+#+END_SRC
+
+* ADDING CSS
+CSS, which stands for Cascading Style Sheet, is a stylesheet used to describe the look and formatting of a document written in a markup language, specifically HTML. With CSS, you can control the color, font, layout, and other aspects of the document's appearance. This allows you to create consistent and appealing style across multiple web pages or documents. Here is a basic css stylesheet:
+
+#+BEGIN_SRC css
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+
+.my-class {
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+#my-id {
+  color: #00b;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+#+END_SRC
+
+In this CSS stylesheet, the body and h1 tags are styled. In the body styling, we have set the font to Arial sans-serif and the body will have a background color of white. In the h1 stying, the text color will be black, the font size will be 24 pixels, and the text will be centered. The class my-class will give all HTML elements that use it a black font color, the Arial sans-serif font, and 16 pixel font size. The ID my-id will have a blue color, will use the Arial sans-serif font, and a font size of 16 pixels. A class is a collection of CSS styling rules that can be used accross several HTML elements, while an id is a group of css rules than can only be used for one HTML element.
+
+To link a CSS stylesheet to an HTML document, add the following code inside the <head> tags:
+
+#+BEGIN_SRC html
+<link rel="stylesheet" href="style.css">
+#+END_SRC
+
+In order to apply css classes and ids to HTML elements after linking the stylesheet, use the following code:
+
+#+BEGIN_SRC html
+<div class="my-class">
+<!-- Some HTML code-->
+</div>
+
+<div id="my-id">
+  <!-- Some HTML code -->
+</div>
+#+END_SRC
+
+CSS classes and ids can be applied to any HTML tags and can be used to style the HTML to make it look modern.
+
+* MORE ADVANCED HTML TAGS AND USES
+
+Some advanced HTML tags for creating websites include:
+
+| TAG          | DESCRIPTION                                        |
+|--------------+----------------------------------------------------|
+| <figure>     | Mark up a self-contained piece of content          |
+| <details>    | Create a toggleable element for additional content |
+| <summary>    | Used with <details> to provide a summary or title  |
+| <video>      | Used to embed videos on an HTML page               |
+| <audio>      | Used to embed audio content on an HTML page        |
+| <figsection> | Provide a caption for content                      |
+
+Here is an example using those tags:
+
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced HTML Tags</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Advanced HTML Tags</h1>
+    <nav>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#asides">Asides</a></li>
+        <li><a href="#media">Media</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p>Welcome to a page that uses advanced HTML tags!</p>
+    </section>
+    <section id="articles">
+      <h2>Articles</h2>
+      <article>
+        <h3>Article 1</h3>
+        <p>This is the first article on the page.</p>
+      </article>
+      <article>
+        <h3>Article 2</h3>
+        <p>This is the second article on the page.</p>
+      </article>
+    </section>
+    <aside>
+      <h4>Aside 1</h4>
+      <p>This is an aside that contains tangentially related content.</p>
+    </aside>
+    <section id="media">
+      <h2>Media</h2>
+      <figure>
+        <video src="video.mp4" controls></video>
+        <figcaption>This is a video that is embedded on the page.</figcaption>
+      </figure>
+      <figure>
+        <audio src="audio.mp3" controls></audio>
+        <figcaption>This is an audio file that is embedded on the page.</figcaption>
+      </figure>
+    </section>
+  </main>
+  <footer>
+    <p>Copyright 2021 Advanced HTML Tags</p>
+  </footer>
+</body>
+</html>
+#+END_SRC
+
+* CSS ANIMATIONS
+CSS animations are used to create dynamic styling of elements that changes overtime. CSS animations are specified in a CSS stylesheet using @keyframes followed by the name of the animation and the steps in the animation. In order to implement an animation, you can create a seperate class or id that adds the animation to any elements that are styled using it. Here is an example:
+
+#+BEGIN_SRC css
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in-out {
+  animation: fade-in-out 2s linear infinite;
+}
+
+#+END_SRC
+
+This is a simple animation that causes text to fade in and out at a constant rate infinitely in 2 second cycles. As mentioned previously, you can add this animation to a HTML element by using the fade-in-out class.

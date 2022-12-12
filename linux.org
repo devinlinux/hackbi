@@ -1,0 +1,230 @@
+#+TITLE: Linux Workshop Teaching Script
+#+AUTHOR: Michael Bobrowski
+#+DESCRIPTION: The teaching script for the linux workshop at Hack BI VI
+#+STARTUP: showeverything
+
+#+BEGIN_COMMENT
+General Plan:
+1. Installation, What is Linux presented while waiting for installation
+2. Setting Up
+3. Go Over Terminal
+4. Go Over Tools
+#+END_COMMENT
+
+* TABLE OF CONTENTS :toc:
+- [[#what-is-linux][What IS LINUX]]
+  - [[#a-brief-history-of-linux][A Brief History of Linux]]
+- [[#installing-linux][INSTALLING LINUX]]
+  - [[#window-managers-and-desktop-environments][Window Managers and Desktop Environments]]
+  - [[#command-line-install][Command-Line Install]]
+  - [[#gui-install][GUI Install]]
+  - [[#preparing-virtualbox][Preparing VirtualBox]]
+  - [[#installing-arch-with-calamares][Installing Arch with Calamares]]
+- [[#setting-up][SETTING UP]]
+  - [[#full-system-updaet][Full System Updaet]]
+  - [[#sound][Sound]]
+  - [[#general-config][General Config]]
+- [[#the-terminal][THE TERMINAL]]
+  - [[#capabilities][Capabilities]]
+  - [[#commands][Commands]]
+  - [[#superiority][Superiority]]
+- [[#linux-tools][LINUX TOOLS]]
+  - [[#editors][Editors]]
+  - [[#cli][CLI]]
+  - [[#package-managers][Package Managers]]
+  - [[#aur][AUR]]
+
+* What IS LINUX
+Linux is a family of free and open-source (foss) operating systems, which are based on the Linux kernel. The kernel is the core of an operating system that manages the hardware and software resources of a computer. Linux is known for its stability, security, and flexibility, and is used in a wide range of devices from smartphones and personal computers to servers and supercomputers.
+
+** A Brief History of Linux
+Linux was create in 1991 by Linux Torvalds who, at the time, was a computer science student at the University of Helsinki in Finland, where he wrote hte Linux kernel as a personal project to create an operating system that was free and open-source. He released the kernel under the GNU General Public License (GPL), which allowed others to freely modify and distribute it.
+
+Over the years, many people and organizations have contributed to the development of the Linux kernel, and today it is used as the basis for a wide variety of operating systems. Some of the most popular Linux-based operating systems (known as distros) include Ubuntu, Fedora, Arch, and Gentoo Linux.
+
+* INSTALLING LINUX
+** Window Managers and Desktop Environments
+In the Linux operating system, a window manager is a program that controls the placement and appearance of windows withing a graphical user interface (GUI). A window manager is responsible for drawing the frames and borders around the windows, and for allowing the user to move, resize, and arrange windows on the desktop.
+
+A desktop environment, on the other hand, is a collection of software programs that are bundled together to provide a complete user experience on the Linux platform. A desktop environment typically includes a window manager, as well as other programs such as a file manager, a desktop background, a panel for launching applications, and a set of system utilities.
+
+In general, window managers are lightweight programs that provide the basic functionalituy for managing windows, while desktop environments offer a more complete and integrated user experience. Users can choose between different window managers and desktop environments, depending on their personal preferences and needs.
+
+In order to install a Linux distribution (or distro) you will need to select what window manager or desktop environment you would like to use. Some distros come with a predetermined desktop environment or window manager, such as Ubuntu which comes with the GNOME desktop environment, while other distributions allow greater customization in the desktop environment or window manager that you would like to use such as Arch Linux and Gentoo Linux.
+
+Some of the most popular desktop environments include GNOME and KDE Plasma which provide a complete user experience including a full suite of applications to use. GNOME is known for its simplicity, accessibility, and modern design. KDE Plasma is a feature-rich desktop environment that provides a customizable and configurable interface.
+
+Some of the msot popular window managers include i3 and Xmonad. Window managers provide only tools for managing the movement and size of windows and give you greater flexability regarding what applications you run on your machine. i3 is a tiling window manager that arranges windows in a grid-like manner, making it efficient and easy to use. Xmonad is a tiling window manager written in the Haskell programming language, and is known for its extensibility and customizability.
+** Command-Line Install
+A command-line installation of a Linux distribution involes using text-based commands to install the operating system. This method is typically used for advanced users who are familiar with the linux command line, and who want to have more control over installation process.
+** GUI Install
+A GUI (graphical user interface) installation of a Linux distribution involves using a series of graphical screens and menus to install the operating system. This method is typically easier and more user-friendly than a command-line installation, and is suitable for users who are less familiar with the Linux command line.
+
+** Preparing VirtualBox
+To prepare a virtualbox virtual machine, select "New", where you want it to be stored, and what type of operating system it is. Select Linux, and Arch then "Next". After that decide how much memory you want the virtual machine to have access to. Generally, you want to give it access to 2048 MB of memory. After that, the next menu that is of interest if the Create Virtual Hard Disk menu, in which you want to decide how much storage to give the virtual machine. You will need at least 24 GB to have a good experience and install all the necessary software that you need. After you have created the virtual machine, more fine tuning is needed in the settings for everything to work properly. Go to settings, system, processor and give it access to at least 2 processors for the virtual machine to work, generally you should give it access to 4 processors. Then go to storage and under Controller" IDE, place the .iso file of the operating system in. After that you are ready to boot into the virtual machine.
+
+** Installing Arch with Calamares
+Calamares is an install framework designed to be very customizable in order to satisfy a wide variety of needs and use cases. The typical Arch Linux installation process involves a command-line installation, but this installation media has been mondified to use the Calamares installer for ease of use.
+
+*** Welcome
+The Welcome page of the installer is the first thing that you will see when you open the installer and prompts you for your language. Once you have selected the appropriate language for your installation, press next. If at any point during the installation you need to return to a previous step use the back button, and if at any point during the installation you decide that you would like to stop, use the cancel button.
+
+*** Location
+The Location page of the installer prompts you for your location, the location will not be used to track you, it is only used to determine your timezone. Once you have decided the timezone that you would like to use press next.
+
+*** Keyboard
+The Keyboard page of the installer asks you for what keyboard layout and language you would like to use. Once you have selected the correct keyboard language and layout for your needs, press the next button on the installer.
+
+*** Partitions
+The Partitions page of the installer is the most complicated section of the installer. In the partitions section you can choose how you want to manage the storage of Arch Linux on the system drive that you are using. On a virtual machine, you can usually choose the "erase disk" option because you do not have anything that you would like to preserve on the drive. If you were performing a multiboot or had something that you would like to save on the system drive, you would select the manual partitioning option.
+
+**** Manual Paritioning
+For manual partitioning, there are three key partitions that you need: boot, swap, and root. The boot partition contains the programs and files for booting the operating system, the swap partition is similar to RAM and provides memory for the operating system to use (generally use this equation to decide how much swap to use: GB of RAM + 4), and the root partition contains all of the files and programs that you would normally use.
+
+For the boot partition, you need around 260 MiB of storage space to contain the bootloader and any additional files the operating system needs to boot. If you are dual booting with another operating system, you can usually look for an existing partition of 200 to 260 MiB which most likely already contains the boot loader and files for another operating system to use. After you select the necessary partition that you would like to use, select "Content: Keep", "Mount Point: /boot/efi", and "Flags: boot". After you have done that press ok, to save your changes. Note that nothing is written to the drive until the last menu of the installer.
+
+For the swap partition, you are usually going to need around GB of RAM + 4 GB. For the average laptop that has 8 GB of RAM, you should have a 12 GB partition of swap space. Note that swap space is not necessary but can increase the amount of ram you have since it can be used once you run out of RAM. If you already have a large amount of RAM (>= 16GB) you should not have any swap space since it may slow your system down. For swap, select "File System: linuxswap" and no flags. Then press ok to confirm your choices.
+
+The root partition is the most importance partition and should be the largest, as it will store all of the programs and files that you will use. For the home partition select "File System: ext4", "Mount Point: /", and "Flag: root". Note that you can change what file system you want to use, but ext4 is generaly the best option.
+
+**** Erase Disk
+Selecting the erase disk option will prompt you for several pieces of basic information: whether you want swap or not and the storage device that you would like to use. Once you have done that, the installer will present you with how if plans to divide the drive into partitions. This is usually suitable for a virtual machine, although it is almost never recommended as the installer does not know your precise needs.
+
+*** Users
+The Users page of the installer prompts you for information regarding how you want yourself and the system to be identified. It will prompt you for your name, the username you want to use to log in, what you want the computer to be names, the password for your user, and the password for the administrator account. Note that most of this information can be changed, but it is good practice to decide what you want at install time and stick with it. It is strongly advised that you select "Use the same password for the administrator account" so that you are able to do things as an administrator without having to do extra steps when it comes time to do that.
+
+*** Summary
+The Summary page of the installer gives you a summary of everything that you have selected so far and it is important to look over all the information to make sure that it is correct. Once you have thoroughly inspected the summary and decided that it conforms to what you want, press the install button to confirm all of your changes. Up to this point, nothing has been written to the disk. This is your last chance to cancel the installation, once you press start, changes will start to be made to the disk.
+
+*** Install
+The Install page of the installer simply installes the system and alerts you to what it is doing and its total progress. There is nothing to do on this page except wait for the install to finish.
+
+*** Finish
+The Finish page of teh installer simply alerts you that Arch Linux has been installed on your computer and you can restart your computer to exit the live environment and enter the full operating system. On a virtual machine, you would select close, then go to the storage section and remove the installation media. You have now completed a linux installation.
+* SETTING UP
+** Full System Updaet
+This version of the Arch Linux installer is designed to be completely offline meaning that it has a snapshot of past packages that are not necessarily the most recent version of the packages. Because of this, the installation time is faster since it does not have to pull the most recent version of the packages, but it means that the first thing you have to do is a full system upgrade.
+
+The first thing that you are going to want to do is sync the mirrors. This simply means that you are connecting to the mirrors and giving your system the necessary information about what the most recent version of packages is. On Arch Linux, we will do this with the package manager, pacman.
+
+#+BEGIN_SRC shell
+sudo pacman -Syy
+#+END_SRC
+
+That command will sync all repositories that you have enabled on the system. The -Syy means sync, and force refresh.
+
+After you do that you are going to want to install the archlinux-keyring package which contains verification signatures for packages from the official Arch Linux repositories. To do this we will use pacman again.
+
+#+BEGIN_SRC shell
+sudo pacman -S archlinux-keyring
+#+END_SRC
+
+Again, that command tells pacman to "sync" or install the archlinux-keyring package
+
+After that, you are going to want to start a full system upgrade like so:
+
+#+BEGIN_SRC shell
+sudo pacman -Syyu
+#+END_SRC
+
+That command syncs, forces refresh, and does a sysupgrade of all packages on the system, bringing them to their most recent version.
+** Sound
+In most window managers, you have to manually configure the sound. This is not necessary in most desktop environments as they provide you with a complete system out of the box. While it is a slight inconvinience to have to configure your own sound, in the end you will have a better grasp of what is happening on your system and some linux knowledge.
+
+The first thing you need to do is install all the necessary packages. You can do this with the package manager.
+
+#+BEGIN_SRC shell
+sudo pacman -S pipewire pipewire-alsa pipewire-jack linux-firmware wireplumber pipewire-jack sof-firmware pavucontrol alsa-utils
+#+END_SRC
+
+That command installs all the necessary packages to use pulseaudio on your system and control it using pavucontrol.
+
+After you do that, you need to enable the services and sockets using systemd. Systemd is a software suite that provides various sytem components with a unified interface for managing system services and other tasks. You can do this with the following command:
+
+#+BEGIN_SRC shell
+sudo systemctl --user enable --now pipewire.service pipewire.socket wireplumber.service pipewire-pulse.service pipewire-pulse.socket
+#+END_SRC
+
+This command tells systemd to enable the specified services and sockets for the current user now. systemctl is the cli (command line interface) for systemd.
+
+After following these steps, a reboot of your machine should make all changes take effect and give you sound on your system.
+** General Config
+To configure things such as your window manager, you will need to edit it's corresponding config files. For example, the i3 config files are located in ~/.config/i3/config. To edit the config file, you will need to use a text editor. A common terminal editor is vim. In order to edit this file using vim, run the following command and press i to enter insert mode:
+
+#+BEGIN_SRC shell
+vim ~/.config/i3/config
+#+END_SRC
+
+After you have made the necessary configurations, you can write your changes and exit vim using escape, to exit insert mode, then :wq
+
+* THE TERMINAL
+** Capabilities
+The Linux terminal is a powerful tools that allows users to access and interact with the underying operating system. Using the terminal, users can perform a wide range of tasks, such as launching and managing applications, managing system files and directories, and performing network and system administration tasks. The terminal allows users to access and manipulate the system using commands, which can be entered either manually or by using scripts. This makes the terminal a useful tool for users who want to have more control over their system and automate repetetive tasks. Anything that can be done in a Graphical User Interface can be done in the terminal.
+** Commands
+Some common linux terminal commands are:
+| COMMAND   | DESCRIPTION                          |
+|-----------+--------------------------------------|
+| ls        | Lists the contents of a directory    |
+| cd        | Changes the current directory        |
+| pwd       | Prints the current working directory |
+| mkdir     | Makes a new directory                |
+| rmdir     | Removes and empty directory          |
+| touch     | Creates a new file                   |
+| cat       | Prints the contents of a file        |
+| cp        | Copies a file                        |
+| mv        | Moves or renames a file              |
+| rm        | Deletes a file                       |
+| grep      | Searches for a pattern in a file     |
+| find      | Searches for files using criteria    |
+| chmod     | Changes the permissions of a file    |
+| chown     | Changes the ownership of a file      |
+| tar       | Archives multiple files into a .tar  |
+| zip       | Compresses zip files                 |
+| unzip     | Extracts files from a .zip           |
+| ssh       | Connects to a remove server          |
+| wget      | Downloads files from the internet    |
+| ping      | Sends a message to a remote device   |
+| systemctl | ALlows you to manage system services |
+| df        | Shows available disk space           |
+| du        | Shows amount of disk space used      |
+| rfkill    | Manage wireless devices on system    |
+| man       | View manual pages                    |
+| sort      | sorts the lines of a text file       |
+
+** Superiority
+The terminal can be seen as superior to GUI applications because it can be faster and mroe efficient for certain tasks, such as when dealing with large numbers of files, performing repetetive tasks, and when doing operations that require ultra-specific criteria. Additionally, the Linux terminal allows users to access their system from anywhere using any device that has a terminal emulator and a network connection. This can be particularly userful for remove work or accessing a server from a different location.
+
+* LINUX TOOLS
+** Editors
+Linux offers several terminal editors that are used to quickly and efficiently edit files or as integrated development environments. Common and popular text editors on Linux include vim, emacs, nano, neovim, and micro. Of those editors, vim and neovim are the most common terminal editors, nano and micro are geared towards new users, and emacs is more of an IDE with a plethora of features not found in any other editor.
+
+** CLI
+The usefulness of the Linux terminal extends to include several CLI (command line interface) versions of several applications as well as several applications that only come in CLI version. Some of the most common and useful CLI applications in linux, especially for development are git, gcc, python, javac, java, and nginx.
+
+| APPLICATION | USES                                         |
+|-------------+----------------------------------------------|
+| git         | A version control system for changes to code |
+| gcc         | The GNU compile collection for c and c++     |
+| python      | A cli interpreter for python                 |
+| javac       | A cli compiler for java                      |
+| java        | A java bytecode interpreter                  |
+| nginx       | A web server                                 |
+| npm         | The Node Package Manager for NodeJS          |
+
+All of these applications can be run completely from the terminal and allow users to increase their productivity by using one application, the terminal emulator, to perform a variety of tasks. Using cli versions of applications also allow for greater control over what that application is doing because command line interfaces allow for greater and more precise control over the operations of an application.
+
+** Package Managers
+Package Managers offer a fast way to install software on Linux distributions with several package managers existing for different distrubutions. The Arch Linux package manager is called pacman and is used exclusively by Arch Linux and distributions based on Arch Linux. The most common linux package manager, found on Debian and distros based on it, is apt. The package manager allows you to install, update, remove, and otherwise manage software package on linux systems. The package manager also allows to you automate processes using it because it can be used in scripts.
+
+** AUR
+The AUR, or Arch User Repository, is a community-drives repository of user-created packages for Arch Linux. The AUR provides a large collection of packages that are not officially part of the main Arch Linux repositories, allowing users to access a wider range of software .
+
+You can browse packages on the AUR by going to the offical website (aur.archlinux.org) and searching for any software that would want to download. Once you have selected the specific package that you want to download you can follow these general steps to installing it on your system:
+
+#+BEGIN_SRC shell
+git clone https://aur.archlinux.org/somepackage.git some_directory
+cd some_directory
+makepkg -si
+#+END_SRC
+
+The git clone command clones the files in the package into the directory specified. If you do not specify a directory for the files to be cloned into, a new directory will be created using the name of the package. Once you have changed your directory to the directory that has all of the files allosiated with the package, you can run ls and find a file called MAKEPKG. This file contains the instructions for the makepkg program to download and install the package. Finally, makepkg -si installs the package and any dependencies. If there are dependencies that cannot be resolved by makepkg -si then you may have to go to the AUR to find the packages for those dependencies.
