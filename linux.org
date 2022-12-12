@@ -38,7 +38,7 @@ General Plan:
 Linux is a family of free and open-source (foss) operating systems, which are based on the Linux kernel. The kernel is the core of an operating system that manages the hardware and software resources of a computer. Linux is known for its stability, security, and flexibility, and is used in a wide range of devices from smartphones and personal computers to servers and supercomputers.
 
 ** A Brief History of Linux
-Linux was create in 1991 by Linux Torvalds who, at the time, was a computer science student at the University of Helsinki in Finland, where he wrote the Linux kernel as a personal project to create an operating system that was free and open-source. He released the kernel under the GNU General Public License (GPL), which allowed others to freely modify and distribute it.
+Linux was create in 1991 by Linux Torvalds who, at the time, was a computer science student at the University of Helsinki in Finland, where he wrote hte Linux kernel as a personal project to create an operating system that was free and open-source. He released the kernel under the GNU General Public License (GPL), which allowed others to freely modify and distribute it.
 
 Over the years, many people and organizations have contributed to the development of the Linux kernel, and today it is used as the basis for a wide variety of operating systems. Some of the most popular Linux-based operating systems (known as distros) include Ubuntu, Fedora, Arch, and Gentoo Linux.
 
@@ -230,5 +230,16 @@ git clone https://aur.archlinux.org/somepackage.git some_directory
 cd some_directory
 makepkg -si
 #+END_SRC
+
+To install packages manually, that is to say without makepkg -si, you would use pacman with the -U flag meaning upgrade. To install packages from the aur this way, follow the procedure layed out in the following block:
+
+#+BEGIN_SRC shell
+git clone https://aur.archlinux.org/somepackage.git some_directory
+cd some_directory
+makepkg
+sudo pacman -U somepackage-someversion.pkg.tar.zst
+#+END_SRC
+
+This method is the same as the makepkg -si method, except for the fact that you run the sudo pacman -U for yourself instead of having the -si flags do it for you.
 
 The git clone command clones the files in the package into the directory specified. If you do not specify a directory for the files to be cloned into, a new directory will be created using the name of the package. Once you have changed your directory to the directory that has all of the files allosiated with the package, you can run ls and find a file called MAKEPKG. This file contains the instructions for the makepkg program to download and install the package. Finally, makepkg -si installs the package and any dependencies. If there are dependencies that cannot be resolved by makepkg -si then you may have to go to the AUR to find the packages for those dependencies.
