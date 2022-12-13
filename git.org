@@ -1,0 +1,270 @@
+#+TITLE: Git Workshop Teaching Script
+#+Author: Michael Bobrowski
+#+DESCRIPTION: The teachings cript for the git workshop at Hack BI VI
+#+STARTUP: showeverything
+
+* TABLE OF CONTENTS :toc:
+- [[#what-is-git][WHAT IS GIT]]
+  - [[#why-is-git-useful][Why is git Useful]]
+- [[#introduction-to-version-control][INTRODUCTION TO VERSION CONTROL]]
+  - [[#what-is-version-control][What Is Version Control]]
+  - [[#git-as-a-version-control-system][Git As A Version Control System]]
+- [[#installing-git][INSTALLING GIT]]
+  - [[#on-linux-and-bsd][On Linux and BSD]]
+  - [[#on-windows][On Windows]]
+  - [[#on-mac][On Mac]]
+- [[#setting-up-git][SETTING UP GIT]]
+  - [[#connecting-git-to-github][Connecting Git to Github]]
+- [[#local-git-repositories][LOCAL GIT REPOSITORIES]]
+  - [[#making-a-git-repository][Making A Git Repository]]
+  - [[#making-files][Making Files]]
+  - [[#commiting-files][Commiting Files]]
+  - [[#viewing-repository-history][Viewing Repository History]]
+- [[#collaborating-with-git][COLLABORATING WITH GIT]]
+  - [[#git-branching][Git Branching]]
+  - [[#working-with-remote-repositories][Working With Remote Repositories]]
+- [[#advanced-git-features][ADVANCED GIT FEATURES]]
+  - [[#stashing][Stashing]]
+  - [[#rebasing][Rebasing]]
+  - [[#submodules][Submodules]]
+
+* WHAT IS GIT
+Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. It is commonly used for source code management in software development, but it can be used to keep track of changes in any set of files. With git, users can revert files back to a previous state, review changes made by other users, and collaborate on files.
+
+** Why is git Useful
+Git is useful because it allows multiple people to work on the same files simultaneousy, without risking conflicts or losing hanges. It also provides a way to track the history made to files, so that users can see who made specific changes and when they were made. This can be helpful for identifying bugs or determining when a feature was added to a project. Additionally, git allows users to easily revert files back to a previous state, which can be helpful if they make a mistake or want to undo changes they have made. Overall, git helps to make collaboration and version control more efficient and effective.
+
+* INTRODUCTION TO VERSION CONTROL
+
+** What Is Version Control
+Version control is a system that allows developers to track and manage changes to their code over time. This is important because it allows developers to easily colaborate on projecs, roll back changes that cause problems, and experiment with new ideas without risking their existing code.
+
+** Git As A Version Control System
+Git is a popular version control system taht allows developers to track changes to their code and collaborate with others on their projects. Git is different from Github, which is a website that provides hosting for git repositories. While git is a tool used on the developer's local machine, Github is a platform that provides a way for developers to share their code and collaborate with others.
+
+* INSTALLING GIT
+
+** On Linux and BSD
+Installing git on Linux follows the same process regardless of what distribution you are using. To install git, you only need to find the correct package (usually called git) and install it using your package manager. Here are some examples:
+
+Debian/Debian-based:
+#+BEGIN_SRC shell
+sudo apt-get install git
+#+END_SRC
+
+Fedora/Fedora-based:
+#+BEGIN_SRC shell
+sudo dnf install git
+#+END_SRC
+
+Gentoo/Gentoo-based:
+#+BEGIN_SRC shell
+sudo emerge --ask --verbose dev-vcs/git
+#+END_SRC
+
+Arch/Arch-based:
+#+BEGIN_SRC shell
+sudo pacman -S git
+#+END_SRC
+
+openSUSE/openSUSE-based:
+#+BEGIN_SRC shell
+zypper install git
+#+END_SRC
+
+FreeBSD:
+#+BEGIN_SRC shell
+pkg install git
+#+END_SRC
+
+OpenBSD:
+#+BEGIN_SRC shell
+pkg_add git
+#+END_SRC
+
+Obviously, there are multiple ways to install git on Linux and BSD, but the most simple and straightforward way to install git.
+
+** On Windows
+To install git on windows go to the [[https://git-scm.com/download/win][git installation for windows]] site to download the installer for windows. Once you have downloaded the installer, launch the wizard and folow the prompts to get git running on your system. After installing git, you may also want to install git bash which is an appliation for Windows environments which provides an emulation layer for a git command line experience.
+
+** On Mac
+To install git on mac os go to the [[https://git-scm.com/download/mac][git installation for mac os]] site to download the mac os installer. Once you have the installer, run the installation wizard to complete the installation. There are no separate git clients that you need to install in order to use git as the built in unix terminal will be adequate.
+
+* SETTING UP GIT
+
+** Connecting Git to Github
+
+*** Creating a Github account
+To create a Github account, go to [[https://github.com/signup][the github signup page]] and follow the steps. The first peice of information that you are prompted for is your email. Once you have entered the email that you would like to use, you will be prompted to create a password. Be sure to create a secure password so that you can securely store private code on Github. Once you have created your secure password, you have to create a username. Your username must be unique and and it will be used to identify you on Github.
+
+After entering your username, you will be asked if you would like to receive product updates and announcements via email. Most people will answer "no" to this, but you are allowed to answer "yes" if you would like to recieve product announcements from email. You will then have to solve a captcha, which you will be able to pass if you are not a robot.
+
+After entering all of your information, you will have to verify your email. At this point, you will have completed the process of creating a Github account.
+
+*** Linking your local machine to your Github account
+Once you have created a Github account, you will need to link your local machine to your Github account. This can be done by using the git remote add command. For example, if your Github username is "myusername" and you want to link to a remote repository names "myrepo", you would run the following command:
+
+#+BEGIN_SRC shell
+git remote add origin https://github.com/myusername/myrepo.git
+#+END_SRC
+
+After you have added the remote repository, you can push your local changes to the remote repository on Github by using the git push command. For example, to push your local changes to the "origin" remove repository, you would run the following command:
+
+#+BEGIN_SRC shell
+git push origin
+#+END_SRC
+
+By following these steps, you will be able to connect your local installation to your Github account and push your code changes to a remove repository on Github.
+
+* LOCAL GIT REPOSITORIES
+
+** Making A Git Repository
+To create a git repository, run the git init command to initialize a new git repository in the current directory. This will create a new subdirectory named ".git" that contains the repository files.
+
+#+BEGIN_SRC shell
+git init
+#+END_SRC
+
+** Making Files
+To create some files in the directory and add them to the repository using the git add command. This will stage the files for the next commit.
+
+#+BEGIN_SRC shell
+touch main.cpp README.md
+git add main.cpp README.md
+#+END_SRC
+
+** Commiting Files
+Commiting the staged files to the repository using the git commit command. This will save a snapshot of your files in the repository history.
+
+#+BEGIN_SRC shell
+git comit -m "Initial commit"
+#+END_SRC
+
+By following these steps, you will create a local git repository in the current directory. You can then use git commands to manage your files and track your changes.
+
+** Viewing Repository History
+To view the history of a git repository, use the git log command. This will display a list of all the commits in the repository, along with the commit message, author, and date.
+
+For example, if you want to view the history of your repository, you would run the following command:
+
+#+BEGIN_SRC shell
+git log
+#+END_SRC
+
+This will display the history of your repository, with the most recent commit at the top. You can use the -p option to view the diff of each commit, which shows the changes made in each commit. You can also use the --oneline option to display the history in a mroe compact format, with each commit on a single line.
+
+By using the git log command, you can view the history of your repository and see the changes that have been made over time. This can be a useful tool for tracking your progress and understanding the evolution of your code.
+
+* COLLABORATING WITH GIT
+
+** Git Branching
+Branching is a key feature of git that allows developers to work on different lines of development within a repository. This is useful because it allows multiple developers to work on different features or fixes without affecting the main branch of code.
+
+When working with git, the main branch of a repository is typically called the "master" branch. Developers can create new branches off the master branch to work on their own changes. For example, if a developer wants to work on a new feature, they can create a new branch called "feature-x" and make their changes on that branch.
+
+To create a new branch using git, you can use the git branch command followed by the name of the new branch. For example, if you want to create a new branch named "feature-x", you would run the following command:
+
+#+BEGIN_SRC shell
+git branch feature-x
+#+END_SRC
+
+This will create a new branch named "feature-x" off of the current branch that you are on. To switch to the new branch and start making changes, use the git checkout command followed by the name of the branch. For example, to switch to the "feature-x" branch, you would run the following command:
+
+#+BEGIN_SRC shell
+git checkout feature-x
+#+END_SRC
+
+Once you are on the new branch, you can start making changes and committing them to the branch. When you are ready to merge your changes back into the main branch, use the git merge command to merge the changes from your feature branch into the main branch. To use the git merge command, first switch to the branch that you want to merge changes into. This is typically the main branch of the repository, which is usually called the "master" branch. Then, run the git merge command followed by the name of the branch that you want to merge the changes from. For example, if you want to merge changes from the "feature-x" branch into the "master" branch, you would run the following command:
+
+#+BEGIN_SRC shell
+git checkout master
+git merge feature-x
+#+END_SRC
+
+By following these steps, you will be able to create and work with branches in git, allowing your to manage your code and collaborate with others on your projects.
+
+** Working With Remote Repositories
+In addition to branching, another important part of collaborating with git is working with remove repositories on Github. A remove repository is a version of your git repository that is hosted on a remote server, such as Github. This allows you to share your code with others and collaborate on projects.
+
+To work with a remote repository, you will need to connect your local repository to the remote repository on Github. This is done using the git remote add command, which adds a new remote repository to your local repository. For example, if your Github username is "myusername" and you want to link to a remove repository names "myrepo", you would run the following command:
+
+#+BEGIN_SRC shell
+git remote add origin https://github.com/myusername/myrepo.git
+#+END_SRC
+
+Once you have added the remote repository, you can push your local changes to the remote repository on Github by using the git push command. This will upload your changes to the remote repository to your local repository using the git pull command.
+
+The git pull command is used to download changes from a remote repository and merge them into your local repository. This is often used toi retrieve updates from other developers who have pushed their changes to the remote repository.
+
+To use the git pull command, you will need to have a remote repository set up for your local repository. This can be done using the git remote add command. Once you have added the remote repository, you can run the git pull command to download teh changes from the remote repository and merge them into your local repository.
+
+For example, if you want to pull changes from the "origin" remote repository, you would run the following command:
+
+#+BEGIN_SRC shell
+git pull origin
+#+END_SRC
+
+This will download changes from the "origin" remote repository and merge them into your local repository. If there are any conflicts between the local and remote versions of the code, git will highlight them and allow you to resolve them before completing the merge.
+
+By working with remote repositories on Github, you can easily share your code with others and collaborate on projects. This is an important part of using git for collaboration.
+
+* ADVANCED GIT FEATURES
+
+Advanced git features are advanced tools and techniques that can improve your workflow when using git. These features are not essential for basic use of git, but they can be useful for more complex projects or for optimizing your git workflow. Some advanced git features include: stashing, rebsaing, and submodules.
+
+** Stashing
+Stashing is an advanced git feature allows you to save changes that you have made to your local repository without committing them to a branch. This is useful when you need to switch to a different branch to work on something else, but you do not want to commit your changes yet. You can later "pop" the stash to restore your changes and continue working on them.
+
+To use stashing, you first need to make some changes to your local repository. This could be adding new files, modifying existing files, or deleting files. Once you have made your changes, you can use the git stash command to save your changes to a stash. This will save your changes, but it will also revert your working directory to the state it was in before you made your changes.
+
+For example, if you have made changes to your local repository and you want to save them to a stash, you would run the following command:
+
+#+BEGIN_SRC shell
+git stash
+#+END_SRC
+
+This will save your changes to a stash and revert your working directory to the state is was in before you mdae your changes. You can then switch to a different branch and work on something else without committing your changes.
+
+To restore your changes from the stash and continue working on them, you can use the git stash pop command. This will restore your changes and apply them to your working directory, allowing you to continue working on them.
+
+By using stashing, you can save your changes without committing them and switch between branches easily. This can be a useful tool for managing your git workflow.
+
+** Rebasing
+Rebasing is an advanced git feature that allows you to modify the history of your repository by changing the base of your branch to a different commit. This is useful when you want to clean up your branch history, for example by squashing multiple committs into a single commit.
+
+To use rebasing, you first need to have a branch with multiple commits. For example, if you have made three commits to your branch, your branch history might look like this:
+
+#+BEGIN_SRC shell
+A - B - C (master)
+#+END_SRC
+
+To rebase your branch, you would specify a new base commit for your branch. This could be an earlier commit in your branch history, or it could be a commit from another branch. For example, if you want to rebase your branch onto commit "A", you would run the following command:
+
+#+BEGIN_SRC shell
+git rebase --onto A
+#+END_SRC
+
+This will modify your branch history so that commit "A" becomes the new base of your branch. Your branch history will now look like this:
+
+#+BEGIN+SRC shell
+A (master)
+#+END_SRC
+
+Rebasing can be a useful tool for cleaning up your branch history and making it easier to read. However, it can also be complex and can be difficult to understand if you are new to git. It is recommended that you learn the basics of git before trying to use rebasing.
+
+** Submodules
+Submodules are an advanced git feature that allows you to include one git repository as a subdirectory of another git repository. This is useful when you want to manage a separate project withing your main repository, or when you want to include code from another repository in your project.
+
+To use submodules, you first need to have two separate git repositories: the main repository and the submodule repository. The submodules repository will be included as a subdirectory of the main repository.
+
+To add a submodule to your main repository, you need to use the git submodule add command. This command takes the URL of the submodule repository as an argument. For example, if the submodule repository is located at https://github.com/user/submodule-repo.git, you would run the follwing command:
+
+#+BEGIN_SRC shell
+git submodule add https://github.com/user/submodule-repo.git
+#+END_SRC
+
+This will add the submodule repository as a subdirectory of the main repository, and it will create a new commit in the main repository that tracks the submodule repository.
+
+To update the submodule in the main repository, you need to use the git submodule update command. This will download the latest changes from the submodule directory and apply them to the subdirectory in the main repository.
+
+By using submodules, you can manage multiple projects within a single repository and easily include code from other repositories in your project. However, submodules can be complex and can be difficult to understand if you are new to git. It is recommended that you learn the basics of git before trying to use submodules.
